@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - voting_app@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="voting_app">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="auto"/>
+    <schema id="3" name="autobazar"/>
+    <schema id="4" name="auto_test"/>
+    <schema id="5" name="booksdb"/>
+    <schema id="6" name="car"/>
+    <schema id="7" name="countries"/>
+    <schema id="8" name="dictionarybd"/>
+    <schema id="9" name="information_schema"/>
+    <schema id="10" name="itacademy"/>
+    <schema id="11" name="lab6db"/>
+    <schema id="12" name="lab7"/>
+    <schema id="13" name="music"/>
+    <schema id="14" name="mysql"/>
+    <schema id="15" name="performance_schema"/>
+    <schema id="16" name="persondb"/>
+    <schema id="17" name="persondb_test"/>
+    <schema id="18" name="sakila"/>
+    <schema id="19" name="shop"/>
+    <schema id="20" name="sys"/>
+    <schema id="21" name="task_tracker"/>
+    <schema id="22" name="test"/>
+    <schema id="23" name="world"/>
+    <table id="24" parent="1" name="t_answer"/>
+    <table id="25" parent="1" name="t_answer_voterinfo"/>
+    <table id="26" parent="1" name="t_user"/>
+    <table id="27" parent="1" name="t_voterinfo"/>
+    <table id="28" parent="1" name="t_voting"/>
+    <column id="29" parent="24" name="f_answer_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="30" parent="24" name="f_text">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="31" parent="24" name="f_voters_number">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="32" parent="24" name="f_voting_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <index id="33" parent="24" name="FKpy53ck2eun6wwca17baoitcu5">
+      <columns>f_voting_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="34" parent="24" name="PRIMARY">
+      <columns>f_answer_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="35" parent="24" name="FKpy53ck2eun6wwca17baoitcu5">
+      <columns>f_voting_id</columns>
+      <ref-key>~.t_voting.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="36" parent="25" name="f_answer_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="37" parent="25" name="f_voter_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <index id="38" parent="25" name="FKm28qbeidj0uqegpsxqrglsrue">
+      <columns>f_voter_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="39" parent="25" name="PRIMARY">
+      <columns>f_answer_id
+f_voter_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="40" parent="25" name="FK7ndfst1jieg0lggxa2gvlywhy">
+      <columns>f_answer_id</columns>
+      <ref-key>~.t_answer.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="41" parent="25" name="FKm28qbeidj0uqegpsxqrglsrue">
+      <columns>f_voter_id</columns>
+      <ref-key>~.t_voterinfo.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="42" parent="26" name="f_user_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="43" parent="26" name="f_email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="44" parent="26" name="f_password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="45" parent="26" name="UK_341owy8xgwys6ijc3ikfy5c2m">
+      <columns>f_email</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="46" parent="26" name="PRIMARY">
+      <columns>f_user_id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="47" parent="26" name="UK_341owy8xgwys6ijc3ikfy5c2m">
+      <columns>f_email</columns>
+      <underlying-index>UK_341owy8xgwys6ijc3ikfy5c2m</underlying-index>
+    </key>
+    <column id="48" parent="27" name="f_voter_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="49" parent="27" name="f_ip_address">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="50" parent="27" name="f_voted_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="51" parent="27" name="UK_jjnyli9utae3r3mtxe3l4yn13">
+      <columns>f_ip_address</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="52" parent="27" name="PRIMARY">
+      <columns>f_voter_id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="53" parent="27" name="UK_jjnyli9utae3r3mtxe3l4yn13">
+      <columns>f_ip_address</columns>
+      <underlying-index>UK_jjnyli9utae3r3mtxe3l4yn13</underlying-index>
+    </key>
+    <column id="54" parent="28" name="f_voting_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="55" parent="28" name="f_question">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="56" parent="28" name="f_state">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="57" parent="28" name="f_user_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <index id="58" parent="28" name="FKcjuhnh5xdmjjwq4lamjuukdn5">
+      <columns>f_user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="59" parent="28" name="PRIMARY">
+      <columns>f_voting_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="60" parent="28" name="FKcjuhnh5xdmjjwq4lamjuukdn5">
+      <columns>f_user_id</columns>
+      <ref-key>~.t_user.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>
