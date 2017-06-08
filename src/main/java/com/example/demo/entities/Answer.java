@@ -1,9 +1,11 @@
 package com.example.demo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +16,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"voting"})
 public class Answer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,12 +34,10 @@ public class Answer implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "F_VOTING_ID", nullable = false)
+    @JsonIgnore
     private Voting voting;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "T_ANSWER_VOTERINFO",
-            joinColumns = {@JoinColumn(name = "F_ANSWER_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "F_VOTER_ID")})
+    @OneToMany(mappedBy = "answer", cascade = CascadeType.ALL)
     private Set<VoterInfo> voterInfos;
 
     @Override

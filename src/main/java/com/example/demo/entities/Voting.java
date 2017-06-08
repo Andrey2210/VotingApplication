@@ -2,9 +2,11 @@ package com.example.demo.entities;
 
 
 import com.example.demo.entities.enums.State;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +18,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "user")
 public class Voting implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,11 +31,12 @@ public class Voting implements Serializable {
     @Column(name = "F_QUESTION", nullable = false)
     private String question;
 
-    @OneToMany(mappedBy = "voting")
+    @OneToMany(mappedBy = "voting", cascade = CascadeType.ALL)
     private Set<Answer> answers;
 
     @ManyToOne
     @JoinColumn(name = "F_USER_ID", nullable = false)
+    @JsonIgnore
     private User user;
 
     @Enumerated(EnumType.STRING)

@@ -1,8 +1,10 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Email;
 
@@ -16,6 +18,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"answers"})
 public class VoterInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,8 +28,7 @@ public class VoterInfo implements Serializable {
     @Column(name = "F_VOTER_ID")
     private Long id;
 
-    @Email
-    @Column(name = "F_IP_ADDRESS", nullable = false, unique = true)
+    @Column(name = "F_IP_ADDRESS", nullable = false)
     private String ipAddress;
 
     @CreationTimestamp
@@ -34,8 +36,10 @@ public class VoterInfo implements Serializable {
     @Column(name = "F_VOTED_DATE")
     private Date votedDate;
 
-    @ManyToMany(mappedBy = "voterInfos")
-    private Set<Answer> answers;
+    @ManyToOne
+    @JoinColumn(name = "F_ANSWER_ID", nullable = false)
+    @JsonIgnore
+    private Answer answer;
 
     @Override
     public boolean equals(Object o) {

@@ -8,7 +8,6 @@ $(document).ready(function () {
     $("#addAnswer").click(function () {
         addAnswer(this);
     });
-
 });
 
 function addVote() {
@@ -73,5 +72,32 @@ function sendVoteForm() {
             alert(data);
         }
     });
-
 }
+//     function sendAnswerForm() {
+//         var voteElements = document.forms["voteForm"].elements;
+//         var question = voteElements["question"].value;
+//         var answers = [];
+//         for (var index = 0; index < voteElements.length; index++) {
+//             if (voteElements[index].name == "answer") {
+//                 answers.push({"text": voteElements[index].value, "votersNumber": 0});
+//             }
+//         }
+//         var voting = {
+//             "question": '' + question,
+//             "answers": answers.toString()
+//         };
+//         $.ajax({
+//             accept: "application/json",
+//             contentType: "application/json",
+//             dataType: "json",
+//             type: 'POST',
+//             url: '/votings',
+//             data: voting,
+//             success: function (data) {
+//                 alert(data.message + "\n" + data.url)
+//             },
+//             error: function (data) {
+//                 alert(data);
+//             }
+//         });
+// }

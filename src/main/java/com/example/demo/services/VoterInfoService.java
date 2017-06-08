@@ -1,9 +1,16 @@
 package com.example.demo.services;
 
+
+import com.example.demo.entities.VoterInfo;
+
 /**
- * Created by Andrey
- * Date: 08.06.2017.
- * Time: 22:42
+ * This interface defines special methods for VoterInfo
+ *
+ * @param <T> Child of VoterInfo class
  */
-public class VoterInfoService {
+public interface VoterInfoService<T extends VoterInfo> {
+
+    void save(T VoterInfo);
+
+    T findById(Long id);
 }

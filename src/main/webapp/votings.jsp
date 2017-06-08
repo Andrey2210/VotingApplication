@@ -26,6 +26,8 @@
 
 <body ng-app="VoteApp">
 <ng-view></ng-view>
+<a href="#!login">login</a>
+<a href="#!registration">registr</a>
 <div class="container">
     <div class="row">
         <div class="col-md-5">
