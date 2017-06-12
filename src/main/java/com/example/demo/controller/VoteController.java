@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.stream.Stream;
 
 @Controller
@@ -24,6 +25,13 @@ public class VoteController {
     public VoteController(VotingService votingService, UserService userService) {
         this.votingService = votingService;
         this.userService = userService;
+    }
+
+    @RequestMapping(value = {"/votings"}, method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Voting>> getVotes() {
+        List<Voting> votes= votingService.findAllActiveVotes();
+        return new ResponseEntity<List<Voting>>(votes, HttpStatus.OK);
     }
 
     /**
@@ -39,10 +47,10 @@ public class VoteController {
     public String addVote(@RequestBody Voting voting, HttpServletRequest request) {
         Voting savedVote = votingService.save(voting);
         if (savedVote.getId() != null) {
-            String url = "'" + request.getRequestURL() + "/" + savedVote.getId() + "'";
-            return "{'message': 'Vote was created', 'url': " + url + "}";
+            String url = "http://localhost:8080/home#!/votings/" + savedVote.getId();
+            return "{\"message\": \"Vote was created\", \"url\": \"" + url + "\"}";
         } else {
-            return "{'message': 'Sorry, Vote wasn't created'}";
+            return "{\"message\": \"Sorry, Vote wasn't created\"}";
         }
     }
 
@@ -58,7 +66,7 @@ public class VoteController {
         Voting vote = votingService.findById(id);
         String ip = request.getRemoteAddr();
         long voteId = vote.getId();
-        boolean flag = false;
+        boolean flag = true;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -73,7 +81,8 @@ public class VoteController {
                         .stream()
                         .map(VoterInfo::getIpAddress))
                 .anyMatch(ip::equals);
-        return flag || flag2 ? new ResponseEntity<Voting>(vote, HttpStatus.OK) :
+        System.out.println(flag2 + " - ip, cookie - " + flag);
+        return (flag && !flag2) ? new ResponseEntity<Voting>(vote, HttpStatus.OK) :
                 new ResponseEntity<Voting>(vote, HttpStatus.NO_CONTENT);
     }
 

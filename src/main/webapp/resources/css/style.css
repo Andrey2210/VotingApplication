@@ -1,3 +1,167 @@
-.createVote {
-    display: none;
+/* Header */
+.header {
+    margin-bottom: 61px;
+}
+.header #navigation_bar {
+    background: #fff;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+#navigation_bar {
+    background: #111111;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+}
+/* Header */
+
+/* Login page */
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input
+ {
+     margin-bottom: 10px;
+     border-top-left-radius: 0;
+     border-top-right-radius: 0;
+ }
+.form-signin span
+{
+  color: #ff0000;
+}
+.account-wall
+{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+/* Login page */
+
+/* Sign up page */
+.form-signup
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signup .form-signup-heading, .form-signup .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signup .checkbox
+{
+    font-weight: normal;
+}
+.form-signup .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signup .form-control:focus
+{
+    z-index: 2;
+}
+.form-signup input
+{
+    margin-bottom: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.account-wall
+{
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.signup-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.login-page
+{
+    display: block;
+    margin-top: 10px;
+}
+/* Sign up page */
+
+/*vote page */
+.glyphicon {
+    margin-right:5px;
+}
+.panel-body .radio,.panel-body .checkbox {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.panel-body .list-group {
+    margin-bottom: 0;
+}
+.margin-bottom-none {
+    margin-bottom: 0;
+}
+.panel-body .radio label,.panel-body .checkbox label {
+    display:block;
+}
+
+#voteForm .form-group {
+    margin-top: 5px;
+}
+#voteForm .form-group input {
+     width: 70%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#voteForm .form-group button {
+   display: inline-block;
 }

@@ -7,13 +7,16 @@ import com.example.demo.services.VotingService;
 import com.example.demo.services.security.SecurityService;
 import com.example.demo.services.validation.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -33,7 +36,7 @@ public class RootController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
+    public String registrationPage(Model model) {
         model.addAttribute("userForm", new User());
         return "registration";
     }
@@ -48,7 +51,7 @@ public class RootController {
         userService.save(userForm);
         securityService.autoLogin(userForm.getEmail(), userForm.getPassword());
 
-        return "redirect:/votings";
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -58,14 +61,33 @@ public class RootController {
         return "login";
     }
 
-    @RequestMapping(value = {"/", "/votings"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        List<Voting> votings = votingService.findAllActiveVotes();
-        if(votings != null && !votings.isEmpty()) {
-            model.addAttribute("Votings", votings);
-        } else {
-            model.addAttribute("message", "No active votes");
+    @GetMapping(value = {"/logout"})
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "votings";
+        return "redirect:/home";
     }
+
+    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
+    public String showAllVotingsPage(Model model) {
+//        List<Voting> votings = votingService.findAllActiveVotes();
+//        if(votings != null && !votings.isEmpty()) {
+//            model.addAttribute("Votings", votings);
+//        } else {
+//            model.addAttribute("message", "No active votes");
+//        }
+        return "index";
+    }
+
+//    @RequestMapping(value = {"/votings/{id}"}, method = RequestMethod.GET)
+//        public String showVotingPage(@PathVariable Long id, Model model) {
+//        return "vote";
+//    }
+//
+//    @RequestMapping(value = {"/votings/{id}/result"}, method = RequestMethod.GET)
+//    public String showVotingResultPage(@PathVariable Long id, Model model) {
+//        return "voteResult";
+//    }
 }

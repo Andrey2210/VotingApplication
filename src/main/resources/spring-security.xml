@@ -13,13 +13,12 @@
         <intercept-url pattern="/users/**" access="isAuthenticated()"/>
         <form-login
                 login-page="/login"
-                default-target-url="/votings"
+                default-target-url="/home"
                 username-parameter="email"
                 password-parameter="password"
                 authentication-failure-url="/login?error"
         />
-        <logout logout-success-url="/login?logout"
-                invalidate-session="true"/>
+        <logout invalidate-session="true"/>
 
         <csrf disabled="true"/>
     </http>
