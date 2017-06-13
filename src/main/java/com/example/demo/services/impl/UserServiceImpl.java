@@ -1,6 +1,7 @@
 package com.example.demo.services.impl;
 
 import com.example.demo.entities.User;
+import com.example.demo.entities.Voting;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,10 @@ public class UserServiceImpl implements UserService<User> {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    @Override
+    public User findById(long id){
+        return userRepository.findOne(id);
+    }
+
 }

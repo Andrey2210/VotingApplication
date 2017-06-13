@@ -24,4 +24,7 @@ public interface UserService<T extends User> {
      * @return Appropriate user
      */
     T findByEmail(String email);
+
+    T findById(long id);
+
 }

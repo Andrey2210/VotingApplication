@@ -9,8 +9,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="vote in votes">
-            <td><a href="#!/votings/{{vote.id}}">{{vote.question}}</a></td>
+        <tr ng-repeat="vote in votes | filter:'ACTIVE'">
+            <td "><a href="#!/votings/{{vote.id}}">{{vote.question}}</a></td>
         </tr>
         </tbody>
     </table>

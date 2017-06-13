@@ -139,6 +139,10 @@
 .glyphicon {
     margin-right:5px;
 }
+.panel-body  {
+    width: 100%;
+    margin: 5px;
+}
 .panel-body .radio,.panel-body .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -164,4 +168,20 @@
 
 #voteForm .form-group button {
    display: inline-block;
+}
+
+#Main .answer-group {
+    width: 100%;
+}
+.poll_bar {
+    max-width: 90%;
+text-align: left;
+margin: 5px;
+}
+.poll_val{
+    position: absolute;
+    right: 20px;
+    margin-top: 10px;
+    float: right;
+    text-align: right;
 }

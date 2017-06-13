@@ -77,10 +77,13 @@
                 <form:form method="POST" modelAttribute="userForm" class="form-signup">
                     <form:input id="email" type="email" path="email" class="form-control" placeholder="Enter Email"
                                 autofocus="true"/>
-                    <form:errors path="email"/>
-                    <form:input  id="password" type="password" path="password" class="form-control" placeholder="Enter Password"/>
-                    <form:errors path="password"/>
-                    <input id="confirmPassword" type="password" class="form-control confPassword" placeholder="Confirm your password"/>
+                    <form:errors path="email" cssStyle="color: red"/>
+                    <form:input  id="password" type="password" path="password" class="form-control"
+                                 placeholder="Enter Password"/>
+                    <form:errors path="password" cssStyle="color: red"/>
+                    <label style="color: red;"></label>
+                    <input id="confirmPassword" type="password" class="form-control confPassword"
+                           placeholder="Confirm your password" required="required"/>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
                 </form:form>
             </div>
@@ -92,5 +95,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<script src="${contextPath}/resources/js/validation.js"></script>
+
 </body>
 </html>

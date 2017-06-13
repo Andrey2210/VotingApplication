@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecurityServiceImpl implements SecurityService{
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsService userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
     @Autowired
-    public SecurityServiceImpl(UserDetailsService userDetailsService, AuthenticationManager authenticationManager) {
+    public SecurityServiceImpl(UserDetailsServiceImpl userDetailsService, AuthenticationManager authenticationManager) {
         this.userDetailsService = userDetailsService;
         this.authenticationManager = authenticationManager;
     }

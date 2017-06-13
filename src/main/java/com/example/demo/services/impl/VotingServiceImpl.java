@@ -45,6 +45,11 @@ public class VotingServiceImpl implements VotingService<Voting> {
     }
 
     @Override
+    public List<Voting> findAll() {
+        return  votingRepository.findAll();
+    }
+
+    @Override
     public void closeVote(Voting voting) {
         voting.setState(State.LOCKED);
         votingRepository.saveAndFlush(voting);

@@ -28,5 +28,7 @@ public interface VotingService<T extends Voting> {
 
     T findById(long id);
 
+    List<T> findAll();
+
     void closeVote(T voting);
 }
