@@ -8,5 +8,5 @@ INSERT INTO voting_app.t_answer (f_text, f_voters_number, f_voting_id) VALUES ('
 
 INSERT INTO voting_app.t_voting (f_question, f_state, f_user_id)  VALUES ('Who is more?', 'ACTIVE', 1);
 
-INSERT INTO voting_app.t_answer (f_text, f_voters_number, f_voting_id) VALUES ('I am man' 1300, 2);
+INSERT INTO voting_app.t_answer (f_text, f_voters_number, f_voting_id) VALUES ('I am man', 1300, 2);
 INSERT INTO voting_app.t_answer (f_text, f_voters_number, f_voting_id) VALUES ('I am woman', 800, 2);
