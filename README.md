@@ -12,4 +12,4 @@
 
 ## Built With
 * Maven - Dependency Management
-* MySQL - Database (default **username:** root; **password:* root, can be changed in the **application.properties** file)
+* MySQL - Database (default **username:** root, **password:** root, can be changed in the **application.properties** file)
